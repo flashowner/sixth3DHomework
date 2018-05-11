@@ -7,21 +7,21 @@
 * 失去玩家目标后，继续巡逻；
 * 计分：玩家每次甩掉一个巡逻兵计一分，与巡逻兵碰撞游戏结束；<br>
 首先显示完成后的效果：<br>
-![]()<br>
+![](https://github.com/flashowner/sixth3DHomework/blob/master/%E6%88%AA%E5%9B%BE/%E5%AE%89.PNG)<br>
 刚开始思考如何做巡逻兵游戏的时候是希望能够用动画来做，因为老师前两节课讲的内容就是和动画有关<br>
 然而当我开始做的时候才发现下载预制自带的动画使用的时候总会有各种各样的问题，要不就是没有反应<br>
 要不就是设置不了Animator里的参数，后来我决定使用自己做的“动画”，也就是让人物移动得好像动画<br>
 一样，可以通过改变人物的位置和旋转来达到这个效果。接下来我将介绍我做这个游戏的步骤：<br>
 首先先从网上下载巡逻兵，地形和玩家的预制，拖到资源里：<br>
-![]()<br>
+![](https://github.com/flashowner/sixth3DHomework/blob/master/%E6%88%AA%E5%9B%BE/%E6%8D%95%E8%8E%B7.PNG)<br>
 接着确定好各个资源初始化的位置，加载预制，在这里用工厂模式生产巡逻兵，给每一个巡逻兵添加一个<br>
 初始的位置，并且给它们的姓名属性赋值方便接下来的操作：<br>
-![]()<br>
+![](https://github.com/flashowner/sixth3DHomework/blob/master/%E6%88%AA%E5%9B%BE/%E6%8D%95%E8%8E%B71.PNG)<br>
 考虑到巡逻兵和玩家的动作完全不同，所以考虑将玩家和巡逻兵的动作分开，玩家的动作主要是接收键盘<br>
 的输入以及判定当前所在区域的位置，以便对应区域的巡逻兵做出相应，下面是玩家判定区域的函数：<br>
-![]()<br>
+![](https://github.com/flashowner/sixth3DHomework/blob/master/%E6%88%AA%E5%9B%BE/%E6%8D%95%E8%8E%B72.PNG)<br>
 其中的 FenchLocation是一个用来判定区域位置的类：
-![]()<br>
+![](https://github.com/flashowner/sixth3DHomework/blob/master/%E6%88%AA%E5%9B%BE/%E6%8D%95%E8%8E%B73.PNG)<br>
 以绝对坐标z轴12.42的值为界可以分为上下两大区域，以绝对坐标x轴-3和3为界可以分为左中右三大区域<br>
 这样合起来一共有六大区域。相较于玩家，巡逻兵的动作就更复杂一些了，首先在没有检测到玩家时巡逻兵<br>
 需要按栅栏照一定的路线移动，相当于巡逻，在碰到障碍物的时候能够转弯，在这里我设置巡逻兵的移动方向<br>
@@ -31,12 +31,12 @@
 胶囊碰撞器用来与玩家的碰撞进行检测，一个盒触发器用来检测玩家是否出现在指定范围，但是在使用的<br>
 的时候发现无法区分到底是哪一个碰撞器被触发，于是我就改用了另一种方法，那就是获得玩家所在的位置<br>
 ，如果玩家的区域和巡逻兵的区域是在同一位置的话，那么巡逻兵就会去追玩家：<br>
-![]()<br>
-![]()<br>
+![](https://github.com/flashowner/sixth3DHomework/blob/master/%E6%88%AA%E5%9B%BE/%E6%8D%95%E8%8E%B74.PNG)<br>
+![](https://github.com/flashowner/sixth3DHomework/blob/master/%E6%88%AA%E5%9B%BE/%E6%8D%95%E8%8E%B75.PNG)<br>
 isCatching用来判断巡逻兵当前的状态是否是追捕玩家的状态。在追赶的时候巡逻兵的速度会比原来的状态<br>
 更快一些，为了保证巡逻兵不跑到别的地方去还得确定它的移动范围：<br>
-![]()<br>
-![]()<br>
+![](https://github.com/flashowner/sixth3DHomework/blob/master/%E6%88%AA%E5%9B%BE/%E6%8D%95%E8%8E%B76.PNG)<br>
+![](https://github.com/flashowner/sixth3DHomework/blob/master/%E6%88%AA%E5%9B%BE/%E6%8D%95%E8%8E%B77.PNG)<br>
 到此一个基本的巡逻兵游戏可以算是完成的，只需要根据之前的mvc架构将动作进行分离，增加场控，以及使用<br>
 工场模式，之前的记分员这次交由订阅与发布模式来实现。<br>
 订阅与发布模式：<br>
@@ -56,7 +56,7 @@ isCatching用来判断巡逻兵当前的状态是否是追捕玩家的状态。�
 分数和游戏结束是如何实现的只需要从GameEventManager获得信息，剩余的交给GameEventManager考虑就行了，具体<br>
 实现代码如下：<br>
 GameStatusText:<br>
-![]()<br>
-![]()<br>
+![](https://github.com/flashowner/sixth3DHomework/blob/master/%E6%88%AA%E5%9B%BE/%E6%8D%95%E8%8E%B78.PNG)<br>
+![](https://github.com/flashowner/sixth3DHomework/blob/master/%E6%88%AA%E5%9B%BE/%E6%8D%95%E8%8E%B79.PNG)<br>
 GameEventManager:<br>
-![]()<br>
+![](https://github.com/flashowner/sixth3DHomework/blob/master/%E6%88%AA%E5%9B%BE/%E6%8D%95%E8%8E%B710.PNG)<br>
