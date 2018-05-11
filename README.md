@@ -62,3 +62,5 @@ GameEventManager:<br>
 ![](https://github.com/flashowner/sixth3DHomework/blob/master/%E6%88%AA%E5%9B%BE/%E6%8D%95%E8%8E%B710.PNG)<br>
 视频链接：<br>
 http://v.youku.com/v_show/id_XMzU5OTc0MTkyMA==.html?spm=a2hzp.8253869.0.0
+代码传送门：<br>
+https://github.com/flashowner/sixth3DHomework/tree/master/Scripts
